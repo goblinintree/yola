@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>欢迎访问</title>
+</head>
+<body>
+欢迎访问我们首页<br>
+
+<!-- 不带参数的：
+\{% url 'name' %\}
+带参数的：参数可以是变量名
+\{% url 'name' 参数 %\} -->
+ 
+例如：
+联系<a href="{% url 'send_mail' %}?mail_to=yulikui@made-in-china.com">@管理员</a>发送测试邮件 <br>
+脚本：<a href="http://127.0.0.1:8000/script/py/list">python脚本List</a><br>
+脚本：<a href="http://127.0.0.1:8000/script/js/list">javascript脚本List</a><br>
+</body>
+</html>

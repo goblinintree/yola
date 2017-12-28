@@ -1,0 +1,50 @@
+<head>
+        <style>
+        ul,li{
+        padding:0;
+        margin:0;
+        list-style:none;
+        }
+        #div_left{
+        float:left;
+        }
+        li:hover{
+            cursor:pointer;
+            color:blue;
+            text-decoration:underline;
+            }
+        #down_div {
+            float: left;
+            margin-left: 80px;
+            position: relative;
+            text-align: right;
+        }
+        #down_div:hover>#down_ul{
+            display:block;}
+         
+         
+        #down_ul {
+            border: 1px solid #808080;
+            display: none;
+            left: 0;
+            padding: 4px;
+            position: absolute;
+            width: 80px;
+        }
+         
+        li {
+            color: #808080;
+            cursor: default;
+            font-size: 12px;
+        }
+        </style>
+        </head>
+        <body>
+        <div id="div_left"><span style="font-weight: bold; font-size: 13px; color: rgb(100, 53, 216);">sunge上传了新照片:</span><span style="color: highlight; font-size: 13px; margin-left: 10px;">不需要言语</span></div>
+        <div id='down_div'><img class='sjxImg' src="三角形图片地址"/>
+            <ul id='down_ul'>
+        <li>隐藏此人动态</li>
+        <li>隐藏此类动态</li>
+        </ul>
+        </div>
+        </body>

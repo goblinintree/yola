@@ -1,0 +1,81 @@
+<html>
+
+<body>
+  <div style="width: 800px;height: 500px; border:1px solid rgb(0, 0, 0);">
+
+    <div style="width: 25%; height: 100%; border:1px solid rgb(4, 0, 255); float:left;box-sizing: border-box; ">
+      <div style="width: 100%; height: 85%;">
+        <select id="selectid" multiple="true" style="width: 100%;height: 100%;">
+          {% for filename in fileList_box.fileList %}
+          <option value={{filename}}>{{filename}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div style="width: 100%;height: 15%;">
+        <button id="reflash">刷新</button>
+      </div>
+    </div>
+
+    <div style="width: 75%;height: 100%; border:1px solid rgb(4, 0, 255);  float:left; box-sizing: border-box;">
+      <div style="width: 100%;height: 85%; ">
+        <div style="width: 100%; ">
+          <div style="width: 20%; float:left; ">
+            <label style="width: 100%;">脚本名称：</label>
+          </div>
+          <div style="width: 70%; float:left;  ">
+            <input id="filename" value="{{filename}}" readonly="true" style="width: 100%;" placeholder="脚本名称">{{filename}}</input>
+          </div>
+          <div style="width: 10%; float:left;  ">
+            <button id="pydo">执行</button>
+          </div>
+        </div>
+        <div style="width: 100%; height: 400px;">
+          <textarea id="result" style="width: 100%; height: 100%;" value="{{jsscript_dict.jcontext}}">{{jsscript_dict.jcontext}}</textarea>
+        </div>
+      </div>
+      <div style="width: 100%;height: 15%;">
+        <button id="jsupdate">Update</button>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="/static/js/jquery.min.js"></script>
+  <script type="text/javascript">
+
+    $(document).ready(function () {
+      var fileList = {{fileList_box.fileList_dict | safe }}  
+
+      $("#selectid").change(function () { SelectChange(); });
+
+      function SelectChange() {
+        filename = $("#selectid").val();
+        for (index in fileList) {
+          if (fileList[index] == filename) {
+            console.log(fileList[index])
+            $("#filename").val(fileList[index])
+          }
+        }
+      }
+
+      $("#pydo").click(function () {
+        $.ajax({
+          type: 'POST',
+          url: '/script/py/do/',
+          data: { py: $("#filename").val() },
+          dataType: 'json',
+          success: function (res) {
+            $("#result").val(res["result"])
+          },
+          error: function () {
+            console.log("系统错误");
+          }
+        });
+      });
+
+    });
+  </script>
+
+</body>
+
+</html>

@@ -1,0 +1,122 @@
+<html>
+  <title>Js Script List</title>
+    <!-- <body>
+    <select multiple="multiple" size="10" style="width:200px;"> 
+        {% for filename in fileList %}
+        <option style="height: 30px;margin: 0 -4px;outline: none;" value={{filename}}>&nbsp;&nbsp;&nbsp;&nbsp;{{filename}}</option>
+        {% endfor %}
+    </select> style="width: 310px; height: 70px;"
+    </body> 
+  
+    position: relative; left: 30px; top: 20px;
+    
+  
+  -->
+
+
+  <body>
+    <div style="width: 800px;height: 500px; border:1px solid rgb(0, 0, 0);" >
+
+      <div style="width: 25%; height: 100%; border:1px solid rgb(4, 0, 255); float:left;box-sizing: border-box; ">
+        <div style="width: 100%; height: 85%;">
+          <select id="selectid" multiple="true" style="width: 100%;height: 100%;">
+              {% for jsscript in jsscriptList %}
+              <option id="" value={{jsscript.rid}}>{{jsscript.jname}}</option>
+              {% endfor %}
+          </select>
+        </div>
+        <div style="width: 100%;height: 15%;">
+          <button id="jsnew">New</button>
+        </div>
+      </div>
+
+      <div style="width: 75%;height: 100%; border:1px solid rgb(4, 0, 255);  float:left; box-sizing: border-box;">
+        <div style="width: 100%;height: 85%; ">
+            <input id="rid" value="{{jsscript_dict.rid}}" type="hidden" ></input>
+            <input id="jname" value="{{jsscript_dict.jname}}" style="width: 100%; " placeholder="名称">{{jsscript_dict.jname}}</input>
+            <input id="jurl" value="{{jsscript_dict.jurl}}" readonly="true"  style="width: 100%; " placeholder="URL(ID)">{{jsscript_dict.jurl}}</input>
+            <input id="jdis" value="{{jsscript_dict.jdis}}" style="width: 100%; height: 60px;" placeholder="描述">{{jsscript_dict.jdis}}</input>
+            <textarea id="jcontext" value="{{jsscript_dict.jcontext}}" style="width: 100%; height: 320px;">{{jsscript_dict.jcontext}}</textarea>
+        </div>
+        <div style="width: 100%;height: 15%;">
+            <button id="jsupdate">Update</button>
+        </div>
+      </div>
+
+    </div>
+
+        
+    <script src="/static/js/jquery.min.js"></script>
+    <script type="text/javascript">
+        var jsscriptList = {{jsscriptList|safe}};
+
+        $(document).ready(function(){
+          //  rid, jname, jurl, jdis, jcontext
+          $("#jsnew").click(function(){
+            var rid = "0";
+            var jname = "";
+            var jurl = "";
+            var jdis = "";
+            var jcontext = "";
+    
+            $("#rid").val("0")
+            $("#jname").val("0")
+            $("#jurl").val("0")
+            $("#jdis").val("描述")
+            $("#jcontext").val("0")
+          });
+
+          $("#jsupdate").click(function(){
+            var jsscript = {};
+            jsscript['rid'] = $("#rid").val();
+            jsscript['jname'] = $("#jname").val();
+            jsscript['jurl'] = $("#jurl").val();
+            jsscript['jdis'] = $("#jdis").val();
+            jsscript['jcontext'] = $("#jcontext").val();
+
+            
+            // alert('OK');
+            $.ajax({
+              type: 'POST',
+              url: '/script/ajax/save/',
+              data: jsscript,
+              dataType: 'json',
+              success:function(jsonData){
+                $("#rid").val(jsonData["rid"])
+                $("#jname").val(jsonData["jname"])
+                $("#jurl").val(jsonData["jurl"])
+                $("#jdis").val(jsonData["jdis"])
+                $("#jcontext").val(jsonData["jcontext"])
+              },
+              error:function(){
+                alert("系统错误");
+              }
+            });
+          });
+
+          $("#selectid").change(function() { SelectChange(); }); 
+
+          function SelectChange() {
+
+            rid = $("#selectid").val();
+            for (index in jsscriptList){
+              if  (jsscriptList[index]["rid"] == rid ){
+                console.log(jsscriptList[index])
+
+                $("#rid").val(jsscriptList[index]['rid'])
+                $("#jname").val(jsscriptList[index]['jname'])
+                $("#jurl").val(jsscriptList[index]['jurl'])
+                $("#jdis").val(jsscriptList[index]['jdis'])
+                $("#jcontext").val(jsscriptList[index]['jcontext'])
+              }
+            }
+            
+
+
+          }
+
+        });
+    </script>
+  </body>
+</html>
+    

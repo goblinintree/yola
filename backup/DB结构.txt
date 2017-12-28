@@ -1,0 +1,21 @@
+REQUEST(rid, method, url, data, channel, moudle, types, description, status)
+-- method 为get|post, post时data可以为空
+-- channel 应用频道
+-- moudle 业务模块
+-- type，description 是对表数据的描述，不同的type对应不同的 description
+-- status 扩展用（爬虫用，）
+
+PAYLOAD(rid, payload, types, description, status)
+-- payload 为payload 内容
+-- types 为payload的类型，默认1意为：XSS
+-- description 为payload描述
+-- status 扩展用（状态可用不可用）
+
+
+JSSCRIPT(rid, name, url, description, context, updatetime)
+-- payload 为payload 内容
+-- name 为script的名称，
+-- url 为script的应用链接
+-- context 内容
+-- description 为payload描述
+-- updatetime 更新时间
