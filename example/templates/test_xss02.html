@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>安全漏洞演示模块</title>
+</head>
+<body>
+    <h1>安全漏洞演示: XSS 存储型</h1>
+
+<!-- 不带参数的：
+\{% url 'name' %\}
+带参数的：参数可以是变量名
+\{% url 'name' 参数 %\} -->
+<a href="http://127.0.0.1:8000/">首页</a> > <a href="http://127.0.0.1:8000/example/list">演示列表</a><hr><br>
+<!-- --------------------------------------------------------------  -->
+<form action="/example/list/xss02" method="POST">
+    First name: <input type="text" name="fname"><br>
+    Last name: <input type="text" name="lname"><br>
+    <input type="submit" value="提交">
+</form>
+
+
+
+{% autoescape off %}
+First name: <div>{{u_name.u_fname}}</div>
+Last name: <div>{{u_name.u_lname}}</div>
+{% endautoescape %}
+
+
+
+<hr>
+payload:
+<pre>
+        yulikui&lt;div>&lt;script type="text/javascript">alert(1)&lt;/script>
+
+</pre>
+
+</body>
+</html>

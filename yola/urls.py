@@ -24,6 +24,8 @@ import face.urls
 import ymail.urls
 import scripts.urls
 import fsrc.urls
+import example.urls
+
 
 urlpatterns = [
     url(r'^$', views.home),
@@ -35,6 +37,7 @@ urlpatterns = [
     url(r'^mail/', include(ymail.urls)),
     url(r'^script/', include(scripts.urls)),
     url(r'^fsrc/', include(fsrc.urls)),
+    url(r'^example/', include(example.urls)),
 
     url(r'^', include(www.urls)),
 

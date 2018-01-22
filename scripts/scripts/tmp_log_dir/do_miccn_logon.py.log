@@ -1,0 +1,8 @@
+Yola
+aaa
+
+default_initBrowser
+10
+{'username': 'XXXXXXXXX', 'callback': 'parent.focusSSOController.callFeedback', 'tab': 'miccn', 'encoding': 'GBK', 'sucurl': 'http://membercenter.cn.made-in-china.com/?_=1', 'ticket': 'undefined', 'password': 'XXXXXXXX', 'pn': 'miccn', 'rememberLogUserNameFlag': '0'}
+3>>>> 
+matchObj_items ERROR: searched None

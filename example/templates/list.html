@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>安全漏洞演示模块</title>
+</head>
+<body>
+    <h1>安全漏洞演示</h1>
+
+<!-- 不带参数的：
+\{% url 'name' %\}
+带参数的：参数可以是变量名
+\{% url 'name' 参数 %\} -->
+
+<a href="http://127.0.0.1:8000/">首页</a> > <a href="http://127.0.0.1:8000/example/list">演示列表</a><hr><br>
+<!-- --------------------------------------------------------------  -->
+
+反射型XSS演示：<a href="http://127.0.0.1:8000/example/list/xss01?name=yulikui">点击提交用户名</a><br>
+存储型XSS演示：<a href="http://127.0.0.1:8000/example/list/xss02">进入表单页面</a><br>
+
+
+</body>
+</html>

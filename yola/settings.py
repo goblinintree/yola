@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'ymail',
     'scripts',
     'fsrc',
+    'example',
 ]
 
 MIDDLEWARE = [
@@ -81,11 +82,11 @@ EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
   
 EMAIL_USE_TLS = False
 # SMTP(Send_conf)
-EMAIL_HOST = 'XXXXXXXXXX'
+EMAIL_HOST = 'smtp.sina.com'
 EMAIL_PORT = 25
-EMAIL_HOST_USER = 'XXXXXXXXXXX'
-EMAIL_HOST_PASSWORD = 'XXXXXXXXXX'
-DEFAULT_FROM_EMAIL = u'XXXXXXXXXXXXXXX'
+EMAIL_HOST_USER = 'yola_server@sina.com'
+EMAIL_HOST_PASSWORD = 'yola1234'
+DEFAULT_FROM_EMAIL = u'Yola(Server)<yola_server@sina.com>'
 # email have no receive conf
 
 # Database

@@ -12,3 +12,4 @@ def home(request):
 def found_404(request):
     respone_text = "前端正在开发中..."
     return HttpResponse(respone_text)
+
