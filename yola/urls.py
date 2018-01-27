@@ -25,6 +25,7 @@ import ymail.urls
 import scripts.urls
 import fsrc.urls
 import example.urls
+import plat.urls
 
 
 urlpatterns = [
@@ -38,6 +39,7 @@ urlpatterns = [
     url(r'^script/', include(scripts.urls)),
     url(r'^fsrc/', include(fsrc.urls)),
     url(r'^example/', include(example.urls)),
+    url(r'^plat/', include(plat.urls)),
 
     url(r'^', include(www.urls)),
 
