@@ -26,6 +26,7 @@ import scripts.urls
 import fsrc.urls
 import example.urls
 import plat.urls
+import cis.urls
 
 
 urlpatterns = [
@@ -40,6 +41,7 @@ urlpatterns = [
     url(r'^fsrc/', include(fsrc.urls)),
     url(r'^example/', include(example.urls)),
     url(r'^plat/', include(plat.urls)),
+    url(r'^cis/', include(cis.urls)),
 
     url(r'^', include(www.urls)),
 

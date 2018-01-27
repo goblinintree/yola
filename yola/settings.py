@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     'fsrc',
     'example',
     'plat',
+    'cis',
 ]
 
 MIDDLEWARE = [
